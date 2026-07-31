@@ -1,21 +1,29 @@
+/* =========================================
+   RESET & BASE STYLES
+   ========================================= */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
+
 html, body {
     height: 100%;
     width: 100%;
-    background-color: #f1f1f1;
-    color: #000;
+    background-color: #f8f9fa; /* Slightly softer white for better contrast */
+    color: #111;
+    scroll-behavior: smooth;
 }
+
 #main {
     position: relative;
     overflow: hidden;
 }
 
-/* Navigation */
+/* =========================================
+   NAVIGATION (Glassmorphism Effect)
+   ========================================= */
 #nav {
     display: flex;
     align-items: center;
@@ -25,28 +33,41 @@ html, body {
     position: fixed;
     top: 0;
     z-index: 99;
-    padding: 0px 40px;
-    background: transparent;
+    padding: 0px 5%; /* Align with section padding */
+    background: rgba(248, 249, 250, 0.8);
+    backdrop-filter: blur(10px); /* Modern frosted glass effect */
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
+
 #nav > h3 {
     font-weight: 400;
-    font-size: 22px;
+    font-size: 24px;
+    letter-spacing: -0.5px;
 }
+
 #nav > button {
-    padding: 10px 24px;
+    padding: 10px 28px;
     border-radius: 50px;
     background-color: #000;
     color: #fff;
-    border: none;
+    border: 1px solid #000;
     cursor: pointer;
-    font-weight: 600;
-    transition: background 0.3s;
-}
-#nav > button:hover {
-    background-color: #333;
+    font-weight: 500;
+    font-size: 15px;
+    transition: all 0.3s ease;
 }
 
-/* Section Fundamentals */
+#nav > button:hover {
+    background-color: #fff;
+    color: #000;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* =========================================
+   SECTION FUNDAMENTALS
+   ========================================= */
 .section {
     position: relative;
     min-height: 100vh;
@@ -68,62 +89,90 @@ canvas {
     pointer-events: none;
 }
 
-/* Circular Images */
+/* =========================================
+   IMAGES & HOVER EFFECTS
+   ========================================= */
 .circular-img {
     width: 280px;
     height: 280px;
     border-radius: 50%;
     object-fit: cover;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
     z-index: 10;
     position: relative;
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
 }
+
+.circular-img:hover {
+    transform: scale(1.03);
+    box-shadow: 0 20px 45px rgba(0,0,0,0.15);
+}
+
 .small-img {
-    width: 200px;
-    height: 200px;
+    width: 220px;
+    height: 220px;
     margin-top: 30px;
 }
 
-/* Home Page Layout */
+/* =========================================
+   HOME PAGE LAYOUT
+   ========================================= */
 .flex-center {
     flex-direction: column;
 }
+
 .text-center-box {
     text-align: center;
     z-index: 10;
-    margin-top: 30px;
+    margin-top: 40px;
     max-width: 700px;
 }
+
 .text-center-box h1 {
-    font-size: 60px;
+    font-size: 65px;
     font-weight: 300;
-    line-height: 1.2;
+    line-height: 1.1;
+    letter-spacing: -1px;
 }
+
 .text-center-box h1 b {
     font-weight: 700;
 }
+
 .text-center-box h2 {
-    font-size: 24px;
-    font-weight: 400;
-    margin-top: 10px;
-    color: #555;
+    font-size: 22px;
+    font-weight: 500;
+    margin-top: 15px;
+    color: #444;
 }
+
 .text-center-box p {
-    color: #7c7c7c;
+    color: #666;
     margin-top: 20px;
     font-size: 18px;
-    line-height: 1.6;
+    line-height: 1.7;
 }
+
 #page > h4 {
     position: absolute;
     bottom: 5%;
-    font-weight: 500;
+    font-weight: 600;
     z-index: 10;
-    letter-spacing: 2px;
-    font-size: 14px;
+    letter-spacing: 3px;
+    font-size: 13px;
+    color: #888;
+    animation: bounce 2s infinite;
 }
 
-/* Content Rows for Pages 1, 2, 3 */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-10px); }
+    60% { transform: translateY(-5px); }
+}
+
+/* =========================================
+   CONTENT ROWS (Pages 1, 2, 3)
+   ========================================= */
 .content-row {
     display: flex;
     justify-content: space-between;
@@ -131,89 +180,146 @@ canvas {
     width: 100%;
     max-width: 1200px;
     z-index: 10;
-    gap: 40px;
+    gap: 60px;
 }
+
 .text-block {
     flex: 1;
 }
-.left-align {
-    text-align: left;
-}
-.right-align {
-    text-align: right;
-}
+
+.left-align { text-align: left; }
+.right-align { text-align: right; }
+
 .text-block h3 {
-    font-weight: 500;
-    color: #7c7c7c;
-    margin-bottom: 15px;
-    letter-spacing: 1px;
+    font-weight: 600;
+    color: #888;
+    margin-bottom: 20px;
+    letter-spacing: 1.5px;
+    font-size: 14px;
+    text-transform: uppercase;
 }
+
 .text-block h1 {
     font-size: 55px;
-    line-height: 1.2;
+    line-height: 1.1;
     font-weight: 700;
+    letter-spacing: -1px;
 }
+
 .text-block p {
     color: #555;
     font-size: 18px;
     line-height: 1.8;
 }
+
 .detail-text p {
-    margin-bottom: 20px;
+    margin-bottom: 24px;
 }
 
-/* ----------------------------------- */
-/* MOBILE RESPONSIVENESS */
-/* ----------------------------------- */
+/* =========================================
+   FOOTER SECTION (Newly Added)
+   ========================================= */
+#footer {
+    min-height: 50vh;
+    background-color: #111;
+    color: #fff;
+    text-align: center;
+    padding: 80px 5%;
+}
+
+#footer h3 {
+    font-size: 45px;
+    font-weight: 700;
+    margin-bottom: 40px;
+    letter-spacing: -1px;
+}
+
+.social-links {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 60px;
+}
+
+.social-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+    padding-bottom: 5px;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #bbb;
+    border-bottom: 2px solid #bbb;
+}
+
+#footer p {
+    color: #777;
+    font-size: 14px;
+}
+
+/* =========================================
+   MOBILE RESPONSIVENESS
+   ========================================= */
 @media (max-width: 768px) {
-    /* Hide the 3D canvas on mobile */
+    /* Hide the 3D canvas on mobile for performance */
     canvas {
         display: none !important;
     }
 
     #nav {
-        padding: 0px 20px;
+        padding: 0px 25px;
     }
+
     #nav > h3 {
-        font-size: 18px;
+        font-size: 20px;
+    }
+    
+    #nav > button {
+        padding: 8px 20px;
+        font-size: 14px;
     }
     
     .section {
-        padding: 120px 20px 60px 20px;
+        padding: 120px 25px 60px 25px;
         min-height: auto;
     }
 
     /* Adjust Circular Images */
     .circular-img {
-        width: 200px;
-        height: 200px;
+        width: 220px;
+        height: 220px;
     }
     .small-img {
-        width: 150px;
-        height: 150px;
-        margin: 20px auto 0 auto;
+        width: 180px;
+        height: 180px;
+        margin: 30px auto 0 auto;
         display: block;
     }
 
-    /* Adjust Typography for detailed fit */
+    /* Adjust Typography for mobile */
     .text-center-box h1 {
-        font-size: 40px;
+        font-size: 42px;
     }
     .text-center-box h2 {
         font-size: 18px;
     }
     .text-center-box p {
-        font-size: 15px;
+        font-size: 16px;
         padding: 0 10px;
     }
 
-    /* Stack sections vertically on mobile */
+    /* Stack sections vertically */
     .content-row {
         flex-direction: column;
-        gap: 30px;
+        gap: 40px;
     }
     
-    /* Reverse order on mobile for specific sections so Titles appear before Details */
+    /* Reverse order on mobile so Titles appear before Details */
     .reverse-mobile {
         flex-direction: column-reverse;
     }
@@ -226,16 +332,78 @@ canvas {
     }
     
     .text-block h1 {
-        font-size: 38px;
+        font-size: 40px;
         margin-bottom: 15px;
     }
     .text-block p {
-        font-size: 15px;
-        line-height: 1.6;
+        font-size: 16px;
     }
     
     #page > h4 {
-        bottom: 2%;
-        font-size: 12px;
+        position: relative;
+        bottom: 0;
+        margin-top: 50px;
     }
+
+    /* Footer Mobile adjustments */
+    #footer h3 {
+        font-size: 32px;
+    }
+    .social-links {
+        gap: 20px;
+        flex-direction: column;
+    }
+}
+/* Card that separates the profile content from the busy background canvas */
+.hero-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 10;
+    position: relative;
+    background: rgba(248, 249, 250, 0.78);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border-radius: 32px;
+    padding: 60px 70px;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.08);
+    max-width: 780px;
+    margin: 0 auto;
+}
+/* Content rows: push blocks toward the edges, open up the center */
+.content-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1400px;   /* wider container so blocks sit further apart */
+    z-index: 10;
+    gap: 140px;           /* was 60px — much more breathing room in the middle */
+}
+
+.text-block {
+    flex: 1;
+    max-width: 380px;    /* keep each block narrower so it hugs its own edge */
+}
+
+.text-block h3 {
+    font-weight: 600;
+    color: #888;
+    margin-bottom: 24px;
+    letter-spacing: 1.5px;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.text-block h1 {
+    font-size: 48px;      /* slightly smaller so it doesn't crowd the block */
+    line-height: 1.25;
+    font-weight: 700;
+    letter-spacing: -1px;
+}
+
+.text-block p {
+    color: #555;
+    font-size: 17px;
+    line-height: 2;       /* more line spacing between the skill rows */
 }
